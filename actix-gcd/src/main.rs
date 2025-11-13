@@ -1,13 +1,12 @@
 use actix_web::{App, HttpResponse, HttpServer, web};
+
 fn main() {
     let server = HttpServer::new(|| App::new().route("/", web::get().to(get_index)));
-    println!("Serving on http://localhost:3000...");
 
     server
         .bind("127.0.0.1:3000")
-        .expect("error binding server to address")
-        .run()
-        .expect("error running server");
+        .expect("error binding server to addresss")
+        .run();
 }
 
 fn get_index() -> HttpResponse {
