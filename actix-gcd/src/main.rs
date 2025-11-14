@@ -9,10 +9,14 @@ struct GcdParameters {
 
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
-    HttpServer::new(|| App::new().route("/", web::get().to(get_index)))
-        .bind(("127.0.0.1", 8080))?
-        .run()
-        .await
+    HttpServer::new(|| {
+        App::new()
+            .route("/", web::get().to(get_index))
+            .route("/gcd", web::post().to(post_gcd))
+    })
+    .bind(("127.0.0.1", 8080))?
+    .run()
+    .await
 }
 
 fn gcd(mut n: u64, mut m: u64) -> u64 {
@@ -43,7 +47,7 @@ async fn get_index() -> impl Responder {
     )
 }
 
-fn post_gcd(form: web::Form<GcdParameters>) -> impl Responder {
+async fn post_gcd(form: web::Form<GcdParameters>) -> impl Responder {
     if form.n == 0 || form.m == 0 {
         return HttpResponse::BadRequest()
             .content_type("text/html")
