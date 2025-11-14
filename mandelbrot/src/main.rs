@@ -68,4 +68,7 @@ fn parse_pair<T: FromStr>(s: &str, seperator: char) -> Option<(T, T)> {
 }
 
 #[test]
-fn test_parse_pair() {}
+fn test_parse_pair() {
+    assert_eq!(parse_pair::<i32>("", ','), None);
+    assert_eq!(parse_pair::<i32>("10", ','), None)
+}
