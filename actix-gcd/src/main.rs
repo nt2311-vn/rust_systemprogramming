@@ -1,15 +1,14 @@
-use actix_web::{App, HttpResponse, HttpServer, web};
+use actix_web::{App, HttpResponse, HttpServer, Responder, web};
 
-fn main() {
-    let server = HttpServer::new(|| App::new().route("/", web::get().to(get_index)));
-
-    server
-        .bind("127.0.0.1:3000")
-        .expect("error binding server to addresss")
-        .run();
+#[actix_web::main]
+async fn main() -> std::io::Result<()> {
+    HttpServer::new(|| App::new().route("/", web::get().to(get_index)))
+        .bind(("127.0.0.1", 8080))?
+        .run()
+        .await
 }
 
-fn get_index() -> HttpResponse {
+async fn get_index() -> impl Responder {
     HttpResponse::Ok().content_type("text/html").body(
         r#"
     <title>GCD Calculator</title>
