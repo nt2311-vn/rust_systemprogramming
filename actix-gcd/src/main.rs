@@ -55,7 +55,7 @@ async fn post_gcd(form: web::Form<GcdParameters>) -> impl Responder {
     }
 
     let response = format!(
-        "The greatest common divisor of the number {} and {}is <b>{}</b>\n",
+        "The greatest common divisor of the number {} and {} is <b>{}</b>\n",
         form.n,
         form.m,
         gcd(form.n, form.m)
