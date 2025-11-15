@@ -1,5 +1,5 @@
 use core::f64;
-use std::{str::FromStr, string::ParseError, usize};
+use std::{str::FromStr, usize};
 
 use num::{Complex, complex::ComplexFloat};
 fn main() {
