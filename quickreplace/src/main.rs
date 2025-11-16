@@ -1,3 +1,5 @@
+use text_colorizer::*;
+
 #[derive(Debug)]
 struct Arguments {
     target: String,
@@ -7,5 +9,12 @@ struct Arguments {
 }
 
 fn main() {
-    println!("Hello, world!");
+    print_usage();
+}
+
+fn print_usage() {
+    eprintln!(
+        "{} - change occurences of one string to another",
+        "quickreplace".green()
+    )
 }
