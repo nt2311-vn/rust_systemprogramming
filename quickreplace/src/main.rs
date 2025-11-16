@@ -11,7 +11,8 @@ struct Arguments {
 }
 
 fn main() {
-    print_usage();
+    let args = parse_args();
+    println!("{:?}", args);
 }
 
 fn print_usage() {
