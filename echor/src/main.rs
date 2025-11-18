@@ -28,12 +28,7 @@ fn main() {
         .collect();
 
     let omit_newline: bool = *matches.get_one::<bool>("omit_newline").unwrap_or(&false);
-
-    let mut ending = "\n";
-
-    if omit_newline {
-        ending = "";
-    }
+    let ending = if omit_newline { "" } else { "\n" };
 
     print!("{}{}", text.join(" "), ending);
 }
