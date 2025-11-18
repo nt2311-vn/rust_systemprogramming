@@ -6,24 +6,30 @@ use predicates::prelude::*;
 type TestResult = Result<(), Box<dyn std::error::Error>>;
 
 #[test]
-fn dies_no_args() {
+fn dies_no_args() -> TestResult {
     let mut cmd = Command::cargo_bin("echor").unwrap();
 
     cmd.assert()
         .failure()
         .stderr(predicates::str::contains("Usage"));
+
+    Ok(())
 }
 
 #[test]
-fn runs() {
+fn runs() -> TestResult {
     let mut cmd = Command::cargo_bin("echor").unwrap();
     cmd.arg("hello").assert().success();
+
+    Ok(())
 }
 
 #[test]
-fn hello1() {
+fn hello1() -> TestResult {
     let outfile = "./tests/expected/hello1.txt";
     let _expected = fs::read_to_string(outfile).unwrap();
     let mut cmd = Command::cargo_bin("echor").unwrap();
     cmd.arg("Hello").assert().success().stdout("Hello\n");
+
+    Ok(())
 }
