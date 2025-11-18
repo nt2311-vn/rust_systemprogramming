@@ -10,4 +10,5 @@ anyhow = "1.0.100"
 [dev-dependencies]
 assert_cmd = "2"
 predicates = "2"
-rand = "0.8"
+pretty_assertions = "1.4.0"
+rand = "0.8.5"
