@@ -1,4 +1,4 @@
-use clap::{Arg, ArgAction, Command};
+use clap::{Arg, ArgAction, Command, builder::ValueParser};
 
 fn main() {
     let matches = Command::new("echor")
@@ -10,7 +10,8 @@ fn main() {
                 .value_name("TEXT")
                 .help("Input text")
                 .required(true)
-                .num_args(1..),
+                .num_args(1..)
+                .value_parser(ValueParser::os_string()),
         )
         .arg(
             Arg::new("omit_newline")
