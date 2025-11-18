@@ -20,5 +20,11 @@ fn main() {
         )
         .get_matches();
 
-    println!("{:#?}", matches);
+    let text: Vec<String> = matches
+        .get_many::<std::ffi::OsString>("text")
+        .unwrap()
+        .map(|os_str| os_str.to_string_lossy().to_string())
+        .collect();
+
+    let omit_newline: bool = *matches.get_one::<bool>("omit_newline").unwrap_or(&false);
 }
