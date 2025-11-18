@@ -1,7 +1,7 @@
 use clap::{Arg, ArgAction, Command};
 
 fn main() {
-    let _matches = Command::new("echor")
+    let matches = Command::new("echor")
         .version("0.1.0")
         .author("nt2311-vn")
         .about("Rust echo")
@@ -10,7 +10,7 @@ fn main() {
                 .value_name("TEXT")
                 .help("Input text")
                 .required(true)
-                .num_args(1),
+                .num_args(1..),
         )
         .arg(
             Arg::new("omit_newline")
@@ -19,4 +19,6 @@ fn main() {
                 .action(ArgAction::SetTrue),
         )
         .get_matches();
+
+    println!("{:#?}", matches);
 }
