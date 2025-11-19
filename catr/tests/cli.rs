@@ -146,3 +146,18 @@ fn spiders_n() -> Result<()> {
 fn spiders_b() -> Result<()> {
     run(&["-b", SPIDERS], "tests/expected/spiders.txt.b.out")
 }
+
+#[test]
+fn bustle() -> Result<()> {
+    run(&[BUSTLE], "tests/expected/the-bustle.txt.out")
+}
+
+#[test]
+fn bustle_n() -> Result<()> {
+    run(&["-n", BUSTLE], "tests/expected/the-bustle.txt.n.out")
+}
+
+#[test]
+fn bustle_b() -> Result<()> {
+    run(&["-b", BUSTLE], "tests/expected/the-bustle.txt.b.out")
+}
