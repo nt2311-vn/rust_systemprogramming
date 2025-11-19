@@ -161,3 +161,18 @@ fn bustle_n() -> Result<()> {
 fn bustle_b() -> Result<()> {
     run(&["-b", BUSTLE], "tests/expected/the-bustle.txt.b.out")
 }
+
+#[test]
+fn all() -> Result<()> {
+    run(&[FOX, SPIDERS, BUSTLE], "tests/expected/all.out")
+}
+
+#[test]
+fn all_n() -> Result<()> {
+    run(&[FOX, SPIDERS, BUSTLE], "tests/expected/all.n,out")
+}
+
+#[test]
+fn all_b() -> Result<()> {
+    run(&[FOX, SPIDERS, BUSTLE], "tests/expected/all.b.out")
+}
