@@ -1,44 +1,22 @@
-use std::error::Error;
+use anyhow::Result;
+use clap::Parser;
+use std::fs::File;
+use std::io::{self, BufRead, BufReader};
 
-use clap::{Arg, ArgAction, Command};
-
-type MyResult<T> = Result<T, Box<dyn Error>>;
-
-#[derive(Debug)]
-pub struct Config {
+#[derive(Debug, Parser)]
+#[command(author, version, about)]
+struct Args {
+    /// Input files
+    #[arg(value_name = "FILE", default_value = "-")]
     files: Vec<String>,
+
+    /// Number lines
+    #[arg(short('n'), long("number"), conflicts_with("number_nonblank_lines"))]
     number_lines: bool,
+
+    /// Number non-blank lines
+    #[arg(short('b'), long("number-nonblank"))]
     number_nonblank_lines: bool,
 }
 
-fn main() {
-    if let Err(e) = run() {
-        eprintln!("{}", e);
-        std::process::exit(1);
-    }
-}
-
-pub fn run() -> MyResult<()> {
-    println!("Hello, world!");
-    Ok(())
-}
-
-pub fn get_args() -> MyResult<Config> {
-    let matches = Command::new("catr")
-        .version("0.1.0")
-        .author("nt2311-vn")
-        .about("Rust cat")
-        .arg(
-            Arg::new("number_lines")
-                .short('n')
-                .help("Number lines")
-                .action(ArgAction::SetFalse),
-        )
-        .arg(
-            Arg::new("number_nonblank_lines")
-                .short('b')
-                .help("Number nonblank lines")
-                .action(ArgAction::SetFalse),
-        )
-        .get_matches();
-}
+fn main() {}
