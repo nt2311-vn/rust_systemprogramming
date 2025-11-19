@@ -6,7 +6,7 @@ use rand::{Rng, distributions::Alphanumeric};
 
 const PRG: &str = "catr";
 const EMPTY: &str = "tests/inputs/empty.txt";
-const FOX: &str = "test/inputs/fox.txt";
+const FOX: &str = "tests/inputs/fox.txt";
 const SPIDERS: &str = "tests/inputs/spiders.txt";
 const BUSTLE: &str = "tests/inputs/the-bustle.txt";
 
@@ -169,7 +169,7 @@ fn all() -> Result<()> {
 
 #[test]
 fn all_n() -> Result<()> {
-    run(&[FOX, SPIDERS, BUSTLE], "tests/expected/all.n,out")
+    run(&[FOX, SPIDERS, BUSTLE], "tests/expected/all.n.out")
 }
 
 #[test]
