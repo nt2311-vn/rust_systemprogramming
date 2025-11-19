@@ -131,3 +131,18 @@ fn fox_n() -> Result<()> {
 fn fox_b() -> Result<()> {
     run(&["-b", FOX], "tests/expected/fox.txt.b.out")
 }
+
+#[test]
+fn spiders() -> Result<()> {
+    run(&[SPIDERS], "tests/expected/spiders.txt.out")
+}
+
+#[test]
+fn spiders_n() -> Result<()> {
+    run(&["-n", SPIDERS], "tests/expected/spiders.txt.n.out")
+}
+
+#[test]
+fn spiders_b() -> Result<()> {
+    run(&["-b", SPIDERS], "tests/expected/spiders.txt.b.out")
+}
