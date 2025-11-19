@@ -1,6 +1,6 @@
 use std::fs;
 
-use anyhow::Result;
+use anyhow::{Ok, Result};
 use assert_cmd::Command;
 use rand::{Rng, distributions::Alphanumeric};
 
@@ -34,4 +34,18 @@ fn gen_bad_file() -> String {
             return filename;
         }
     }
+}
+
+#[test]
+fn skip_bad_file() -> Result<()> {
+    let bad = gen_bad_file();
+    let expected = format!("{bad}: .* [(]os error 2[)]");
+
+    Command::cargo_bin(PRG)?
+        .arg(&bad)
+        .assert()
+        .success()
+        .stderr(predicates::str::is_match(expected)?);
+
+    Ok(())
 }
