@@ -116,3 +116,18 @@ fn empty_n() -> Result<()> {
 fn empty_b() -> Result<()> {
     run(&["-b", EMPTY], "tests/expected/empty.txt.b.out")
 }
+
+#[test]
+fn fox() -> Result<()> {
+    run(&[FOX], "tests/expected/fox.txt.out")
+}
+
+#[test]
+fn fox_n() -> Result<()> {
+    run(&["-n", FOX], "tests/expected/fox.txt.n.out")
+}
+
+#[test]
+fn fox_b() -> Result<()> {
+    run(&["-b", FOX], "tests/expected/fox.txt.b.out")
+}
