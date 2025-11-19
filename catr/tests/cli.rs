@@ -78,3 +78,8 @@ fn run_stdin(input_file: &str, args: &[&str], expected_file: &str) -> Result<()>
 
     Ok(())
 }
+
+#[test]
+fn bustle_stdin() -> Result<()> {
+    run_stdin(BUSTLE, &["-"], "tests/expected/the-bustle.txt.stdin.out")
+}
