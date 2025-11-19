@@ -101,3 +101,18 @@ fn bustle_stdin_b() -> Result<()> {
         "tests/expected/the-bustle.txt.b.stdin.out",
     )
 }
+
+#[test]
+fn empty() -> Result<()> {
+    run(&[EMPTY], "tests/expected/empty.txt.out")
+}
+
+#[test]
+fn empty_n() -> Result<()> {
+    run(&["-n", EMPTY], "tests/expected/empty.txt.n.out")
+}
+
+#[test]
+fn empty_b() -> Result<()> {
+    run(&["-b", EMPTY], "tests/expected/empty.txt.b.out")
+}
