@@ -1,4 +1,4 @@
-use anyhow::Result;
+use anyhow::{Ok, Result};
 use clap::{Arg, ArgAction, Command, Parser};
 use std::error::Error;
 use std::fs::File;
@@ -41,7 +41,20 @@ pub fn get_args() -> MyResult<Config> {
                 .help("number lines")
                 .action(ArgAction::SetFalse)
                 .conflicts_with("number_nonblank"),
-        );
+        )
+        .arg(
+            Arg::new("number_nonblank")
+                .short('b')
+                .long("number-nonblank")
+                .help("Number non-blank lines")
+                .action(ArgAction::SetFalse),
+        )
+        .get_matches();
+
+    Ok(Config {
+        files: matches.value_source("files").unwrap(),
+        number_lines: matches.get_one(id),
+    })
 }
 
 fn main() {
