@@ -1,6 +1,8 @@
 [package]
 name = "echor"
 version = "0.1.0"
+author = "nt2311-vn"
+about = "Rust echo"
 edition = "2024"
 
 [dependencies]
