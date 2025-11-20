@@ -1,7 +1,8 @@
 use clap::Parser;
 
 #[derive(Debug, Parser)]
-#[command(version, author, about)]
+#[command(version = "0.1.0", author = "nt2311-vn", about = "Rust echo")]
+/// Rust version of echo
 struct Args {
     /// Input text
     #[arg(required(true))]
