@@ -28,3 +28,20 @@ struct Args {
 }
 
 fn main() {}
+
+fn run(args: Args) -> Result<()> {
+    let num_files = args.files.len();
+
+    for (file_num, filename) in args.files.iter().enumerate() {
+        match open(filename) {
+            Err(err) => eprintln!("{filename}: {err}"),
+            Ok(mut file) => {
+                if num_files > 1 {
+                    println!("{}==> {filename} <==", if file_num > 0 { "\n" } else { "" },);
+                }
+            }
+        }
+    }
+
+    Ok(())
+}
